@@ -1,250 +1,58 @@
-/* Styles de base */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
 body {
-    font-family: 'Poppins', sans-serif;
-    background-color: #111;
-    color: white;
-    line-height: 1.6;
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f4f4f4;
 }
 
-.container {
-    width: 85%;
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 20px;
-}
-
-/* Navbar */
-.navbar {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 15px 0;
-    background-color: #222;
-    position: fixed;
-    width: 100%;
-    top: 0;
-    z-index: 100;
-    transition: background-color 0.3s;
-}
-
-.navbar.scrolled {
-    background-color: rgba(34, 34, 34, 0.9);
-}
-
-.navbar .logo {
-    font-size: 1.8rem;
-    font-weight: 600;
-    color: #ffeb3b;
-}
-
-.navbar .nav-links {
-    display: flex;
-    list-style: none;
-}
-
-.navbar .nav-links li {
-    margin-left: 20px;
-}
-
-.navbar .nav-links li a {
-    color: white;
-    text-decoration: none;
-    font-weight: 500;
-    transition: color 0.3s;
-}
-
-.navbar .nav-links li a:hover {
-    color: #ffeb3b;
-}
-
-/* CTA Button */
-.cta-button {
-    background-color: #ff5252;
-    color: white;
-    border: none;
-    padding: 10px 20px;
-    font-size: 1rem;
-    cursor: pointer;
-    transition: background-color 0.3s, transform 0.2s;
-}
-
-.cta-button:hover {
-    background-color: #ff3d00;
-    transform: scale(1.05);
-}
-
-/* Hero/Banner Section */
 header {
-    height: 100vh;
-    background-image: url('banner.jpg');
-    background-size: cover;
-    background-position: center;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    color: white;
-    position: relative;
-    overflow: hidden;
+  background-color: #333;
+  color: white;
+  padding: 10px 0;
+  text-align: center;
 }
 
-header::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.5);
-    z-index: 1;
+nav ul {
+  list-style-type: none;
 }
 
-header .banner {
-    position: relative;
-    z-index: 2;
-    animation: fadeIn 1s ease-in-out;
+nav ul li {
+  display: inline;
+  margin: 0 15px;
 }
 
-@keyframes fadeIn {
-    from {
-        opacity: 0;
-        transform: translateY(30px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
+nav ul li a {
+  color: white;
+  text-decoration: none;
 }
 
-header .banner h1 {
-    font-size: 4rem;
-    margin-bottom: 20px;
-}
-
-header .banner p {
-    font-size: 1.5rem;
-    margin-bottom: 30px;
-}
-
-/* Games Section */
-.games-section {
-    background-color: #222;
-    padding: 60px 0;
-}
-
-.games-section h2 {
-    text-align: center;
-    font-size: 2.5rem;
-    margin-bottom: 50px;
-    animation: fadeIn 1.5s ease-in-out;
-}
-
-.game-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 20px;
+.store {
+  margin: 20px;
+  text-align: center;
 }
 
 .game-card {
-    background-color: #333;
-    padding: 20px;
-    border-radius: 10px;
-    text-align: center;
-    overflow: hidden;
-    transition: transform 0.3s, box-shadow 0.3s;
-    position: relative;
-    z-index: 1;
+  background-color: #fff;
+  padding: 15px;
+  margin: 10px;
+  border: 1px solid #ccc;
+  display: inline-block;
 }
 
-.game-card img {
-    max-width: 100%;
-    border-radius: 10px;
-    margin-bottom: 20px;
-    transition: transform 0.3s;
+button {
+  background-color: #333;
+  color: white;
+  padding: 10px;
+  border: none;
+  cursor: pointer;
 }
 
-.game-card:hover img {
-    transform: scale(1.1);
-}
-
-.game-card h3 {
-    font-size: 1.8rem;
-    margin-bottom: 10px;
-    color: #ffeb3b;
-}
-
-.game-card p {
-    color: #ccc;
-}
-
-.game-card:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.5);
-}
-
-/* About Section */
-.about-section {
-    background-color: #111;
-    padding: 60px 0;
-    text-align: center;
-}
-
-.about-section h2 {
-    font-size: 2.5rem;
-    margin-bottom: 30px;
-}
-
-.about-section p {
-    font-size: 1.2rem;
-    line-height: 1.8;
-    color: #ccc;
-    width: 80%;
-    margin: 0 auto;
-}
-
-/* Footer */
 footer {
-    background-color: #222;
-    color: #fff;
-    padding: 40px 0;
-    text-align: center;
-}
-
-footer p {
-    margin-bottom: 20px;
-}
-
-footer .social-links {
-    list-style: none;
-    display: flex;
-    justify-content: center;
-    gap: 15px;
-}
-
-footer .social-links li a {
-    color: #ffeb3b;
-    font-size: 1.2rem;
-    text-decoration: none;
-    transition: color 0.3s;
-}
-
-footer .social-links li a:hover {
-    color: #ff5252;
-}
-
-/* Responsive */
-@media (max-width: 768px) {
-    .navbar .nav-links {
-        flex-direction: column;
-    }
-    
-    header .banner h1 {
-        font-size: 2.5rem;
-    }
+  text-align: center;
+  padding: 10px;
+  background-color: #333;
+  color: white;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
 }
