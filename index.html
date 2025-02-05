@@ -1,42 +1,64 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>EpicChess Store</title>
-  <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EpicChess Store</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <header>
-    <h1>EpicChess Store</h1>
-    <nav>
-      <ul>
-        <li><a href="#">Accueil</a></li>
-        <li><a href="#">Jeux</a></li>
-        <li><a href="#">Analyses</a></li>
-        <li><a href="#">Classements</a></li>
-      </ul>
-    </nav>
-  </header>
+    <!-- Header -->
+    <header>
+        <h1>EpicChess Store</h1>
+        <nav>
+            <ul>
+                <li><a href="#">Accueil</a></li>
+                <li><a href="#">Jeux</a></li>
+                <li><a href="#">Téléchargements</a></li>
+                <li><a href="#">Mon Profil</a></li>
+            </ul>
+        </nav>
+    </header>
 
-  <section class="store">
-    <h2>Jeux Populaires</h2>
-    <div class="games">
-      <div class="game-card">
-        <h3>Échecs en Ligne</h3>
-        <button>Jouer</button>
-      </div>
-      <div class="game-card">
-        <h3>Échecs 3D</h3>
-        <button>Jouer</button>
-      </div>
-    </div>
-  </section>
+    <!-- Carrousel / Bannières -->
+    <section class="banner">
+        <div class="banner-item">
+            <h2>Jeux Gratuits du Mois</h2>
+            <button>Voir Plus</button>
+        </div>
+        <div class="banner-item">
+            <h2>Offres Spéciales</h2>
+            <button>Découvrir</button>
+        </div>
+    </section>
 
-  <footer>
-    <p>&copy; 2025 EpicChess. Tous droits réservés.</p>
-  </footer>
+    <!-- Catalogue des jeux -->
+    <section class="games">
+        <h2>Nos Jeux Populaires</h2>
+        <div class="game-list">
+            <div class="game-card">
+                <img src="game1.jpg" alt="Jeu 1">
+                <h3>Jeu 1</h3>
+                <button>Télécharger</button>
+            </div>
+            <div class="game-card">
+                <img src="game2.jpg" alt="Jeu 2">
+                <h3>Jeu 2</h3>
+                <button>Télécharger</button>
+            </div>
+            <div class="game-card">
+                <img src="game3.jpg" alt="Jeu 3">
+                <h3>Jeu 3</h3>
+                <button>Télécharger</button>
+            </div>
+        </div>
+    </section>
 
-  <script src="script.js"></script>
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2025 EpicChess Store</p>
+    </footer>
+
+    <script src="script.js"></script>
 </body>
 </html>
