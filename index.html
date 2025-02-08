@@ -1,66 +1,120 @@
 <!DOCTYPE html>
 <html lang="fr">
+
 <head>
+    <meta name="google-adsense-account" content="ca-pub-8379781357857138">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>EpicChess Store</title>
-    <link rel="stylesheet" href="style.css">
+    <meta name="description" content="Epic Hess - Ensemble pour améliorer Epic Games.">
+    <meta name="keywords" content="Epic Hess, Epic Games, amélioration, communauté, jeux vidéo">
+    <meta name="author" content="Epic Hess Team">
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="Epic Hess - Construire un meilleur Epic Games">
+    <meta property="og:description" content="Unissons-nous pour améliorer Epic Games : propositions, critiques constructives et vision pour l'avenir.">
+    <meta property="og:image" content="https://epic-hess.vercel.app/EpicHess.jpg">
+    <meta property="og:url" content="https://epic-hess.vercel.app">
+    <meta property="og:type" content="website">
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Epic Hess - Construire un meilleur Epic Games">
+    <meta name="twitter:description" content="Découvrez comment améliorer Epic Games avec nous !">
+    <meta name="twitter:image" content="https://epic-hess.vercel.app/EpicHess.jpg">
+
+    <link rel="icon" href="EpicHess.jpg" type="image/jpeg">
+    <title>Epic Hess</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="script.js" defer></script>
 </head>
+<script src="https://kulroakonsu.net/88/tag.min.js" data-zone="130174" async data-cfasync="false"></script>
 <body>
-    <!-- Header -->
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="logo" aria-label="Epic Hess logo">Epic Hess</div>
+        <ul class="nav-links">
+            <li><a href="#about" aria-label="Notre vision">Notre Vision</a></li>
+            <li><a href="#problems" aria-label="Les problèmes actuels">Les Problèmes</a></li>
+            <li><a href="#solutions" aria-label="Nos propositions">Nos Propositions</a></li>
+            <li><a href="#petition" aria-label="Rejoindre le mouvement">Rejoignez le Mouvement</a></li>
+        </ul>
+    </nav>
+
+    <!-- Hero Section -->
     <header>
-        <div class="logo">
-            <h1>EpicChess Store</h1>
+        <div class="banner">
+            <h1>Bienvenue chez <span class="highlight">Epic Hess</span></h1>
+            <p>Nous croyons en un Epic Games meilleur : plus équitable, plus transparent et plus à l'écoute des joueurs.</p>
+            <a href="#about" class="cta-button">Découvrez notre vision</a>
         </div>
-        <nav>
-            <ul>
-                <li><a href="#">Accueil</a></li>
-                <li><a href="#">Jeux</a></li>
-                <li><a href="#">Téléchargements</a></li>
-                <li><a href="#">Mon Profil</a></li>
-            </ul>
-        </nav>
     </header>
 
-    <!-- Carrousel / Bannières -->
-    <section class="banner">
-        <div class="banner-item">
-            <h2>Jeux Gratuits du Mois</h2>
-            <button>Voir Plus</button>
-        </div>
-        <div class="banner-item">
-            <h2>Offres Spéciales</h2>
-            <button>Découvrir</button>
+    <!-- About Section -->
+    <section id="about" class="epic-section">
+        <div class="container">
+            <h2>Notre Vision</h2>
+            <p>Epic Games est un acteur majeur dans l'industrie du jeu vidéo, mais nous pensons qu'il y a de la place pour des améliorations significatives. Chez <strong>Epic Hess</strong>, nous nous engageons à identifier les problèmes et à proposer des solutions concrètes qui bénéficient à la communauté des joueurs et aux développeurs.</p>
         </div>
     </section>
 
-    <!-- Catalogue des jeux -->
-    <section class="games">
-        <h2>Nos Jeux Populaires</h2>
-        <div class="game-list">
-            <div class="game-card">
-                <img src="game1.jpg" alt="Jeu 1">
-                <h3>Jeu 1</h3>
-                <button>Télécharger</button>
+    <!-- Problems Section -->
+    <section id="problems" class="epic-section">
+        <div class="container">
+            <h2>Les Problèmes Actuels</h2>
+            <div class="clash-content">
+                <div class="clash-card">
+                    <h3>Politique de Monétisation</h3>
+                    <p>Les microtransactions, bien que lucratives, sont souvent perçues comme intrusives et incitatives à l'excès.</p>
+                </div>
+                <div class="clash-card">
+                    <h3>Gestion des Suspensions</h3>
+                    <p>Des suspensions de comptes jugées injustifiées laissent les joueurs sans recours clair ou explications adéquates.</p>
+                </div>
+                <div class="clash-card">
+                    <h3>Manque de Support aux Développeurs</h3>
+                    <p>Les développeurs indépendants expriment souvent leur frustration face à un manque de visibilité sur l'Epic Games Store.</p>
+                </div>
+                <div class="clash-card">
+                    <h3>Confidentialité des Données</h3>
+                    <p>Les pratiques de collecte de données suscitent des inquiétudes parmi les utilisateurs, notamment sur la transparence.</p>
+                </div>
             </div>
-            <div class="game-card">
-                <img src="game2.jpg" alt="Jeu 2">
-                <h3>Jeu 2</h3>
-                <button>Télécharger</button>
-            </div>
-            <div class="game-card">
-                <img src="game3.jpg" alt="Jeu 3">
-                <h3>Jeu 3</h3>
-                <button>Télécharger</button>
-            </div>
+        </div>
+    </section>
+
+    <!-- Solutions Section -->
+    <section id="solutions" class="petition-section">
+        <div class="container">
+            <h2>Nos Propositions</h2>
+            <ul>
+                <li>🔍 Plus de transparence : Publier des rapports détaillés sur les politiques de données et les décisions importantes.</li>
+                <li>💬 Communication améliorée : Répondre plus rapidement et de manière claire aux demandes des joueurs et développeurs.</li>
+                <li>🎮 Un modèle de monétisation plus équitable : Réduire les microtransactions excessives et offrir des options gratuites équilibrées.</li>
+                <li>🌟 Soutenir les développeurs indépendants : Mettre en avant les jeux indépendants avec des campagnes marketing dédiées.</li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- Petition Section -->
+    <section id="petition" class="petition-section">
+        <div class="container">
+            <h2>Rejoignez le Mouvement</h2>
+            <p>Participez au changement ! Signez notre pétition pour faire entendre votre voix auprès d'Epic Games.</p>
+            <a href="https://www.mesopinions.com/petition/autres/epichess/236696?source=link&tmstp=1732897102&p=petition" target="_blank" class="cta-button">Signer la Pétition</a>
         </div>
     </section>
 
     <!-- Footer -->
     <footer>
-        <p>&copy; 2025 EpicChess Store</p>
+        <div class="container">
+            <p>Epic Hess © 2024 - Tous droits réservés.</p>
+            <ul class="social-links">
+                <li><a href="https://www.reddit.com/r/EpicHess123/">Reddit</a></li>
+                <li><a href="https://discord.gg/DDHdYhzh">Discord</a></li>
+                <li><a href="https://youtube.com/@epichess-o4g?feature=shared">YouTube</a></li>
+            </ul>
+        </div>
     </footer>
-
-    <script src="script.js"></script>
 </body>
+
 </html>
