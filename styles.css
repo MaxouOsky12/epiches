@@ -1,131 +1,267 @@
+/* Reset CSS */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
+/* Body */
 body {
     font-family: 'Arial', sans-serif;
-    background-color: #F0F2F5;
-    color: #333;
+    background-color: #1c1c1c;
+    color: #ffffff;
+    line-height: 1.6;
+    overflow-x: hidden;
+    text-align: center; /* Centrage global par défaut */
 }
 
-header {
-    background-color: #24292F;
-    color: white;
-    padding: 20px 0;
-    text-align: center;
+/* Navbar */
+.navbar {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    background: rgba(45, 45, 45, 0.8); /* Effet de verre dépoli */
+    backdrop-filter: blur(10px);
+    padding: 15px 30px;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
 }
 
-header .logo h1 {
-    font-size: 24px;
+.navbar .logo {
+    font-size: 2rem;
+    font-weight: bold;
+    color: #e74c3c;
+    text-shadow: 0 4px 10px rgba(231, 76, 60, 0.7);
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+}
+
+.nav-links li {
     margin-left: 20px;
 }
 
-nav ul {
-    display: flex;
-    list-style-type: none;
+.nav-links a {
+    text-decoration: none;
+    color: #ffffff;
+    padding: 10px;
+    border-radius: 5px;
+    transition: all 0.3s ease;
 }
 
-nav ul li {
+.nav-links a:hover {
+    background: linear-gradient(45deg, #e74c3c, #c0392b);
+    color: #ffffff;
+    box-shadow: 0 0 10px #e74c3c;
+}
+
+/* Hero Section */
+.banner {
+    height: 80vh;
+    background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), 
+                url('img/hero_image.jpg') no-repeat center center/cover;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: #ffffff;
+    text-align: center; /* Centrer le contenu textuel */
+    padding: 20px;
+    position: relative;
+    overflow: hidden;
+}
+
+.banner h1 {
+    font-size: 4rem;
+    margin-bottom: 20px;
+    text-shadow: 0 4px 10px rgba(0, 0, 0, 0.7);
+}
+
+.banner p {
+    font-size: 1.5rem;
+    margin-bottom: 30px;
+    max-width: 600px;
+}
+
+.cta-button {
+    background: linear-gradient(45deg, #e74c3c, #c0392b);
+    color: #ffffff;
+    padding: 15px 30px;
+    font-size: 1.2rem;
+    border: none;
+    border-radius: 30px;
+    cursor: pointer;
+    transition: all 0.3s ease, transform 0.2s;
+    text-decoration: none;
+}
+
+.cta-button:hover {
+    background: linear-gradient(45deg, #ff7675, #d63031);
+    transform: scale(1.1);
+    box-shadow: 0 0 20px #ff7675;
+}
+
+/* Sections */
+.epic-section, .petition-section {
+    padding: 60px 20px;
+    text-align: center;
+}
+
+.epic-section {
+    background-color: #242424;
+}
+
+.petition-section {
+    background-color: #333333;
+}
+
+h2 {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+}
+
+/* Problèmes */
+.clash-content {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* Adaptation responsive */
+    gap: 30px;
+    justify-content: center;
+    align-items: center; /* Centre les cartes verticalement */
+}
+
+.clash-card {
+    background: rgba(51, 51, 51, 0.9);
+    backdrop-filter: blur(8px);
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+    transition: all 0.3s ease;
+    text-align: left; /* Aligne le texte des cartes à gauche */
+}
+
+.clash-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 10px 20px rgba(231, 76, 60, 0.7);
+}
+
+.clash-card h3 {
+    font-size: 1.5rem;
+    color: #e74c3c;
+    margin-bottom: 10px;
+}
+
+.clash-card p {
+    color: #bdc3c7;
+    font-size: 1.1rem;
+    line-height: 1.4;
+}
+
+/* Section compteur communauté */
+.counter-section {
+    padding: 50px;
+    background: #292929;
+    text-align: center;
+}
+
+#community-count {
+    font-size: 3rem;
+    font-weight: bold;
+    color: #e74c3c;
+    transition: transform 0.3s ease;
+}
+
+/* Effet d'animation pour le compteur */
+.fadeIn {
+    animation: fadeIn 0.5s ease-in-out;
+}
+
+@keyframes fadeIn {
+    from {
+        transform: scale(1.1);
+        opacity: 0.5;
+    }
+    to {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+/* Footer */
+footer {
+    background: #1c1c1c;
+    padding: 20px 0;
+    text-align: center;
+    color: #ecf0f1;
+}
+
+footer .social-links {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+}
+
+footer .social-links li {
     margin: 0 15px;
 }
 
-nav ul li a {
-    color: white;
+footer .social-links a {
+    color: #ecf0f1;
+    font-size: 1.2rem;
     text-decoration: none;
-    font-size: 16px;
+    transition: color 0.3s ease;
 }
 
-nav ul li a:hover {
-    color: #1DBF73;
+footer .social-links a:hover {
+    color: #e74c3c;
 }
 
-.banner {
-    display: flex;
-    justify-content: space-around;
-    margin: 30px 0;
-}
+/* 📱 Responsive Mobile */
+@media (max-width: 768px) {
+    .navbar {
+        flex-direction: column;
+        align-items: center;
+    }
 
-.banner-item {
-    background-color: #1DBF73;
-    color: white;
-    padding: 30px;
-    border-radius: 8px;
-    text-align: center;
-    width: 45%;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-}
+    .nav-links {
+        flex-direction: column;
+        text-align: center;
+    }
 
-.banner-item h2 {
-    font-size: 24px;
-    margin-bottom: 10px;
-}
+    .nav-links li {
+        margin: 10px 0;
+    }
 
-button {
-    padding: 10px 20px;
-    background-color: #333;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-}
+    .banner {
+        height: 60vh;
+        padding: 15px;
+    }
 
-button:hover {
-    background-color: #555;
-}
+    .banner h1 {
+        font-size: 2.5rem;
+    }
 
-.games {
-    text-align: center;
-    padding: 50px;
-    background-color: #fff;
-}
+    .banner p {
+        font-size: 1.2rem;
+    }
 
-.games h2 {
-    font-size: 28px;
-    margin-bottom: 30px;
-}
+    .cta-button {
+        font-size: 1rem;
+        padding: 12px 25px;
+    }
 
-.game-list {
-    display: flex;
-    justify-content: space-around;
-    gap: 20px;
-}
+    h2 {
+        font-size: 2rem;
+    }
 
-.game-card {
-    background-color: white;
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
-    width: 250px;
-    text-align: center;
-}
+    .clash-card {
+        text-align: center;
+    }
 
-.game-card img {
-    width: 100%;
-    height: auto;
-    border-radius: 8px;
-    margin-bottom: 10px;
-}
-
-.game-card h3 {
-    font-size: 20px;
-    margin-bottom: 10px;
-}
-
-footer {
-    text-align: center;
-    background-color: #24292F;
-    color: white;
-    padding: 20px;
-    position: fixed;
-    width: 100%;
-    bottom: 0;
-}
-
-footer p {
-    font-size: 14px;
+    #community-count {
+        font-size: 2.5rem;
+    }
 }
