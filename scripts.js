@@ -1,6 +1,7 @@
 const express = require("express");
 const http = require("http");
 const { Server } = require("socket.io");
+const { v4: uuidv4 } = require("uuid");
 
 const app = express();
 const server = http.createServer(app);
@@ -10,6 +11,12 @@ let sessions = {};
 
 io.on("connection", (socket) => {
     console.log("Un utilisateur s'est connecté");
+    
+    socket.on("createSession", (callback) => {
+        const sessionId = uuidv4();
+        sessions[sessionId] = [];
+        callback(sessionId);
+    });
     
     socket.on("join", ({ username, sessionId }) => {
         socket.username = username;
