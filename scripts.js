@@ -1,35 +1,43 @@
 const express = require("express");
 const http = require("http");
 const { Server } = require("socket.io");
-const { v4: uuidv4 } = require("uuid");
+const cors = require("cors");
 
 const app = express();
 const server = http.createServer(app);
-const io = new Server(server);
+const io = new Server(server, {
+    cors: {
+        origin: "*",
+        methods: ["GET", "POST"]
+    }
+});
 
-let sessions = {};
+app.use(cors());
+
+let sessions = {}; // Stocke les sessions et les messages
 
 io.on("connection", (socket) => {
     console.log("Un utilisateur s'est connecté");
     
-    socket.on("createSession", (callback) => {
-        const sessionId = uuidv4();
-        sessions[sessionId] = [];
+    socket.on("createSession", ({ sessionName }, callback) => {
+        let sessionId = Math.random().toString(36).substr(2, 9);
+        sessions[sessionId] = { name: sessionName, messages: [] };
         callback(sessionId);
     });
     
     socket.on("join", ({ username, sessionId }) => {
-        socket.username = username;
-        socket.sessionId = sessionId;
-        if (!sessions[sessionId]) sessions[sessionId] = [];
         socket.join(sessionId);
-        socket.emit("chatHistory", sessions[sessionId]);
+        if (sessions[sessionId]) {
+            socket.emit("chatHistory", sessions[sessionId].messages);
+        }
     });
     
-    socket.on("message", (msg) => {
-        const fullMessage = `${socket.username}: ${msg}`;
-        sessions[socket.sessionId].push(fullMessage);
-        io.to(socket.sessionId).emit("message", fullMessage);
+    socket.on("message", ({ sessionId, username, msg }) => {
+        if (sessions[sessionId]) {
+            let message = { username, msg };
+            sessions[sessionId].messages.push(message);
+            io.to(sessionId).emit("message", message);
+        }
     });
     
     socket.on("disconnect", () => {
@@ -37,6 +45,7 @@ io.on("connection", (socket) => {
     });
 });
 
-server.listen(3000, () => {
-    console.log("Serveur lancé sur http://localhost:3000");
+const PORT = process.env.PORT || 3000;
+server.listen(PORT, () => {
+    console.log(`Serveur en ligne sur le port ${PORT}`);
 });
