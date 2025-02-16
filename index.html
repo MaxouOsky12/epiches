@@ -91,7 +91,11 @@
         function updateChat(messages, append = false) {
             let chatBox = document.getElementById('chat-box');
             if (!append) chatBox.innerHTML = "";
-            messages.forEach(m => chatBox.innerHTML += `<p><strong>${m.username}:</strong> ${m.msg}</p>`);
+            messages.forEach(m => {
+                let messageElement = document.createElement("p");
+                messageElement.innerHTML = `<strong>${m.username}:</strong> ${m.msg}`;
+                chatBox.appendChild(messageElement);
+            });
             chatBox.scrollTop = chatBox.scrollHeight;
         }
     </script>
