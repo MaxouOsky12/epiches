@@ -14,6 +14,7 @@
 <body>
     <h2>Mini Chat</h2>
     <input type="text" id="username" placeholder="Entrez votre pseudo">
+    <input type="text" id="sessionName" placeholder="Nom de la session">
     <button onclick="createSession()">Créer une session</button>
     <button onclick="showJoinSection()">Rejoindre une session</button>
     
@@ -31,18 +32,19 @@
     
     <script>
         const socket = io("http://localhost:3000");
-        let username = "", sessionId = "";
+        let username = "", sessionId = "", sessionName = "";
         
         function createSession() {
             username = document.getElementById('username').value;
-            if (!username) {
-                alert("Veuillez entrer un pseudo");
+            sessionName = document.getElementById('sessionName').value;
+            if (!username || !sessionName) {
+                alert("Veuillez entrer un pseudo et un nom de session");
                 return;
             }
-            socket.emit("createSession", (id) => {
+            socket.emit("createSession", { sessionName }, (id) => {
                 sessionId = id;
                 document.getElementById("sessionId").value = id;
-                alert("Session créée ! ID : " + id);
+                alert("Session créée : " + sessionName + " (ID: " + id + ")");
                 socket.emit("join", { username, sessionId });
                 showChatSection();
             });
