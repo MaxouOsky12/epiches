@@ -8,37 +8,66 @@
     <style>
         body { font-family: Arial, sans-serif; text-align: center; }
         #chat-box { width: 300px; height: 300px; border: 1px solid black; overflow-y: auto; margin: auto; padding: 10px; }
-        input, button { margin-top: 10px; }
+        input, button { margin-top: 10px; display: block; margin-left: auto; margin-right: auto; }
     </style>
 </head>
 <body>
     <h2>Mini Chat</h2>
-    <button onclick="createSession()">Créer une session</button>
-    <input type="text" id="sessionId" placeholder="ID de session">
-    <button onclick="joinChat()">Rejoindre</button>
     <input type="text" id="username" placeholder="Entrez votre pseudo">
-    <div id="chat-box"></div>
-    <input type="text" id="message" placeholder="Tapez un message">
-    <button onclick="sendMessage()">Envoyer</button>
+    <button onclick="createSession()">Créer une session</button>
+    <button onclick="showJoinSection()">Rejoindre une session</button>
+    
+    <div id="join-section" style="display: none;">
+        <input type="text" id="sessionId" placeholder="ID de session">
+        <button onclick="joinChat()">Rejoindre</button>
+    </div>
+    
+    <div id="chat-section" style="display: none;">
+        <h3>Chat</h3>
+        <div id="chat-box"></div>
+        <input type="text" id="message" placeholder="Tapez un message">
+        <button onclick="sendMessage()">Envoyer</button>
+    </div>
+    
     <script>
         const socket = io("http://localhost:3000");
         let username = "", sessionId = "";
         
         function createSession() {
+            username = document.getElementById('username').value;
+            if (!username) {
+                alert("Veuillez entrer un pseudo");
+                return;
+            }
             socket.emit("createSession", (id) => {
+                sessionId = id;
                 document.getElementById("sessionId").value = id;
                 alert("Session créée ! ID : " + id);
+                showChatSection();
             });
         }
         
-        function joinChat() {
+        function showJoinSection() {
             username = document.getElementById('username').value;
+            if (!username) {
+                alert("Veuillez entrer un pseudo");
+                return;
+            }
+            document.getElementById("join-section").style.display = "block";
+        }
+        
+        function joinChat() {
             sessionId = document.getElementById('sessionId').value;
-            if (!username || !sessionId) {
-                alert("Veuillez entrer un pseudo et un ID de session");
+            if (!sessionId) {
+                alert("Veuillez entrer un ID de session");
                 return;
             }
             socket.emit("join", { username, sessionId });
+            showChatSection();
+        }
+        
+        function showChatSection() {
+            document.getElementById("chat-section").style.display = "block";
         }
         
         socket.on("chatHistory", (messages) => {
@@ -65,3 +94,4 @@
     </script>
 </body>
 </html>
+
