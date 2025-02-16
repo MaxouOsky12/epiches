@@ -43,6 +43,7 @@
                 sessionId = id;
                 document.getElementById("sessionId").value = id;
                 alert("Session créée ! ID : " + id);
+                socket.emit("join", { username, sessionId });
                 showChatSection();
             });
         }
@@ -81,17 +82,16 @@
         function sendMessage() {
             let msg = document.getElementById('message').value;
             if (!msg || !sessionId) return;
-            socket.emit("message", { sessionId, msg });
+            socket.emit("message", { sessionId, username, msg });
             document.getElementById('message').value = "";
         }
         
         function updateChat(messages, append = false) {
             let chatBox = document.getElementById('chat-box');
             if (!append) chatBox.innerHTML = "";
-            messages.forEach(m => chatBox.innerHTML += `<p>${m}</p>`);
+            messages.forEach(m => chatBox.innerHTML += `<p><strong>${m.username}:</strong> ${m.msg}</p>`);
             chatBox.scrollTop = chatBox.scrollHeight;
         }
     </script>
 </body>
 </html>
-
