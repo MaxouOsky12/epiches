@@ -80,8 +80,8 @@
         
         function sendMessage() {
             let msg = document.getElementById('message').value;
-            if (!msg) return;
-            socket.emit("message", msg);
+            if (!msg || !sessionId) return;
+            socket.emit("message", { sessionId, msg });
             document.getElementById('message').value = "";
         }
         
