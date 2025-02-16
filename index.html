@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mini Chat</title>
+    <script src="https://cdn.socket.io/4.0.1/socket.io.min.js"></script>
     <style>
         body { font-family: Arial, sans-serif; text-align: center; }
         #chat-box { width: 300px; height: 300px; border: 1px solid black; overflow-y: auto; margin: auto; padding: 10px; }
@@ -12,14 +13,23 @@
 </head>
 <body>
     <h2>Mini Chat</h2>
-    <input type="text" id="username" placeholder="Entrez votre pseudo">
+    <button onclick="createSession()">Créer une session</button>
     <input type="text" id="sessionId" placeholder="ID de session">
     <button onclick="joinChat()">Rejoindre</button>
+    <input type="text" id="username" placeholder="Entrez votre pseudo">
     <div id="chat-box"></div>
     <input type="text" id="message" placeholder="Tapez un message">
     <button onclick="sendMessage()">Envoyer</button>
     <script>
-        let username = "", sessionId = "", messages = {};
+        const socket = io("http://localhost:3000");
+        let username = "", sessionId = "";
+        
+        function createSession() {
+            socket.emit("createSession", (id) => {
+                document.getElementById("sessionId").value = id;
+                alert("Session créée ! ID : " + id);
+            });
+        }
         
         function joinChat() {
             username = document.getElementById('username').value;
@@ -28,21 +38,28 @@
                 alert("Veuillez entrer un pseudo et un ID de session");
                 return;
             }
-            if (!messages[sessionId]) messages[sessionId] = [];
-            updateChat();
+            socket.emit("join", { username, sessionId });
         }
+        
+        socket.on("chatHistory", (messages) => {
+            updateChat(messages);
+        });
+        
+        socket.on("message", (msg) => {
+            updateChat([msg], true);
+        });
         
         function sendMessage() {
             let msg = document.getElementById('message').value;
             if (!msg) return;
-            messages[sessionId].push(username + ": " + msg);
+            socket.emit("message", msg);
             document.getElementById('message').value = "";
-            updateChat();
         }
         
-        function updateChat() {
+        function updateChat(messages, append = false) {
             let chatBox = document.getElementById('chat-box');
-            chatBox.innerHTML = messages[sessionId].map(m => `<p>${m}</p>`).join('');
+            if (!append) chatBox.innerHTML = "";
+            messages.forEach(m => chatBox.innerHTML += `<p>${m}</p>`);
             chatBox.scrollTop = chatBox.scrollHeight;
         }
     </script>
