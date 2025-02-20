@@ -1,105 +1,51 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-    <link rel="icon" href="Kavio.jpg" type="image/jpeg">
-    <meta name="google-site-verification" content="OYInI8VwXMVQGWxIbAGBe0o_2B0PgRQw0oeBRaj5Y-o" />
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mini Chat</title>
-    <script src="https://cdn.socket.io/4.0.1/socket.io.min.js"></script>
-    <style>
-        body { font-family: Arial, sans-serif; text-align: center; }
-        #chat-box { width: 300px; height: 300px; border: 1px solid black; overflow-y: auto; margin: auto; padding: 10px; }
-        input, button { margin-top: 10px; display: block; margin-left: auto; margin-right: auto; }
-    </style>
+    <title>Kavio - Création de Jeux & Logiciels</title>
+    <link rel="stylesheet" href="styles.css">
+    <script defer src="script.js"></script>
 </head>
 <body>
-    <h2>Mini Chat</h2>
-    <input type="text" id="username" placeholder="Entrez votre pseudo">
-    <input type="text" id="sessionName" placeholder="Nom de la session">
-    <button onclick="createSession()">Créer une session</button>
-    <button onclick="showJoinSection()">Rejoindre une session</button>
+    <header>
+        <div class="logo">K</div>
+        <nav>
+            <ul>
+                <li><a href="#about">À Propos</a></li>
+                <li><a href="#projects">Projets</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
     
-    <div id="join-section" style="display: none;">
-        <input type="text" id="sessionId" placeholder="ID de session">
-        <button onclick="joinChat()">Rejoindre</button>
-    </div>
+    <section id="hero">
+        <h1>Bienvenue chez Kavio</h1>
+        <p>Nous créons des jeux vidéo et logiciels innovants.</p>
+        <a href="#projects" class="btn">Découvrir nos projets</a>
+    </section>
     
-    <div id="chat-section" style="display: none;">
-        <h3>Chat</h3>
-        <div id="chat-box"></div>
-        <input type="text" id="message" placeholder="Tapez un message">
-        <button onclick="sendMessage()">Envoyer</button>
-    </div>
+    <section id="about">
+        <h2>Qui sommes-nous ?</h2>
+        <p>Kavio est une équipe passionnée de développeurs et designers dédiés à la création d'expériences numériques uniques.</p>
+    </section>
     
-    <script>
-        const socket = io("http://localhost:3000");
-        let username = "", sessionId = "", sessionName = "";
-        
-        function createSession() {
-            username = document.getElementById('username').value;
-            sessionName = document.getElementById('sessionName').value;
-            if (!username || !sessionName) {
-                alert("Veuillez entrer un pseudo et un nom de session");
-                return;
-            }
-            socket.emit("createSession", { sessionName }, (id) => {
-                sessionId = id;
-                document.getElementById("sessionId").value = id;
-                alert("Session créée : " + sessionName + " (ID: " + id + ")");
-                socket.emit("join", { username, sessionId });
-                showChatSection();
-            });
-        }
-        
-        function showJoinSection() {
-            username = document.getElementById('username').value;
-            if (!username) {
-                alert("Veuillez entrer un pseudo");
-                return;
-            }
-            document.getElementById("join-section").style.display = "block";
-        }
-        
-        function joinChat() {
-            sessionId = document.getElementById('sessionId').value;
-            if (!sessionId) {
-                alert("Veuillez entrer un ID de session");
-                return;
-            }
-            socket.emit("join", { username, sessionId });
-            showChatSection();
-        }
-        
-        function showChatSection() {
-            document.getElementById("chat-section").style.display = "block";
-        }
-        
-        socket.on("chatHistory", (messages) => {
-            updateChat(messages);
-        });
-        
-        socket.on("message", (msg) => {
-            updateChat([msg], true);
-        });
-        
-        function sendMessage() {
-            let msg = document.getElementById('message').value;
-            if (!msg || !sessionId) return;
-            socket.emit("message", { sessionId, username, msg });
-            document.getElementById('message').value = "";
-        }
-        
-        function updateChat(messages, append = false) {
-            let chatBox = document.getElementById('chat-box');
-            if (!append) chatBox.innerHTML = "";
-            messages.forEach(m => {
-                let messageElement = document.createElement("p");
-                messageElement.innerHTML = `<strong>${m.username}:</strong> ${m.msg}`;
-                chatBox.appendChild(messageElement);
-            });
-            chatBox.scrollTop = chatBox.scrollHeight;
-        }
-    </script>
+    <section id="projects">
+        <h2>Nos Projets</h2>
+        <div class="project-grid">
+            <div class="project-card">Projet 1</div>
+            <div class="project-card">Projet 2</div>
+            <div class="project-card">Projet 3</div>
+        </div>
+    </section>
+    
+    <section id="contact">
+        <h2>Contactez-nous</h2>
+        <p>Email : contact@kavio.com</p>
+    </section>
+    
+    <footer>
+        <p>&copy; 2025 Kavio. Tous droits réservés.</p>
+    </footer>
 </body>
 </html>
