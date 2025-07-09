@@ -1,16 +1,55 @@
 <!DOCTYPE html>
-<html>
+<html lang="fr">
 <head>
+  <meta charset="UTF-8" />
   <title>AdZap</title>
   <style>
-    body { font-family: sans-serif; text-align: center; padding: 10px; }
-    #points { font-size: 24px; font-weight: bold; }
+    body {
+      font-family: "Segoe UI", sans-serif;
+      background: linear-gradient(135deg, #fff04d, #ffe68c);
+      color: #333;
+      text-align: center;
+      padding: 20px;
+      margin: 0;
+      width: 250px;
+    }
+
+    .emoji {
+      font-size: 48px;
+      margin-bottom: 10px;
+    }
+
+    h1 {
+      font-size: 22px;
+      margin: 10px 0;
+    }
+
+    p {
+      font-size: 14px;
+      margin-bottom: 20px;
+    }
+
+    #points-box {
+      background: white;
+      padding: 15px;
+      border-radius: 12px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+      font-size: 22px;
+      font-weight: bold;
+      color: #111;
+    }
+
+    #points {
+      color: #f57c00;
+    }
   </style>
 </head>
 <body>
-  <h1>🚫 AdZap</h1>
-  <p>Pubs bloquées = points gagnés 🎯</p>
-  <div>Points : <span id="points">0</span></div>
+  <div class="emoji">😎</div>
+  <h1>AdZap</h1>
+  <p>Chaque pub bloquée te fait gagner des points !</p>
+  <div id="points-box">Points : <span id="points">0</span></div>
+
   <script src="popup.js"></script>
 </body>
 </html>
