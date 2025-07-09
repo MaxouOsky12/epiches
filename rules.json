@@ -1,0 +1,11 @@
+[
+  {
+    "id": 1,
+    "priority": 1,
+    "action": { "type": "block" },
+    "condition": {
+      "urlFilter": "||doubleclick.net|adservice.google.com|googlesyndication.com|ads.|/ads/|/banners/|.adserver.|pagead/|popunder|sponsored|tracking",
+      "resourceTypes": ["script", "xmlhttprequest", "sub_frame", "image"]
+    }
+  }
+]
